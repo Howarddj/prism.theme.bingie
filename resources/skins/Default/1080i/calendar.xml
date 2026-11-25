@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Prism theme for Bingie -->
+<window type="dialog">
+    <defaultcontrol always="true">1000</defaultcontrol>
+    <coordinates>
+        <left>0</left>
+        <top>0</top>
+    </coordinates>
+    <animation type="WindowOpen" reversible="false">
+        <effect type="fade" start="0" end="100" time="300"/>
+    </animation>
+    <animation type="WindowClose" reversible="false">
+        <effect type="fade" start="100" end="0" time="250"/>
+    </animation>
+    <controls>
+        <control type="image">
+            <width>1920</width>
+            <height>1080</height>
+            <texture>bingie_white.png</texture>
+            <colordiffuse>FF000000</colordiffuse>
+        </control>
+        <control type="image">
+            <width>1920</width>
+            <height>1080</height>
+            <aspectratio>scale</aspectratio>
+            <texture background="true">$INFO[Window().Property(prism.fanart)]</texture>
+        </control>
+        <control type="image">
+            <width>1920</width>
+            <height>1080</height>
+            <texture>bingie_white.png</texture>
+            <colordiffuse>$INFO[Skin.String(BackgroundOverlayColor)]</colordiffuse>
+        </control>
+        <control type="image">
+            <width>1920</width>
+            <height>1080</height>
+            <texture>bingie_white.png</texture>
+            <colordiffuse>BF000000</colordiffuse>
+        </control>
+        <control type="label">
+            <left>80</left>
+            <top>40</top>
+            <width>1760</width>
+            <height>70</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <font>Bold38</font>
+            <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+            <label>[COLOR $INFO[Skin.String(BingieProgressBarColor)]]PRISM[/COLOR]   $INFO[Window().Property(calendar.title)]</label>
+        </control>
+        <control type="scrollbar" id="60">
+            <left>1856</left>
+            <top>140</top>
+            <width>8</width>
+            <height>900</height>
+            <texturesliderbackground border="3" colordiffuse="$INFO[Skin.String(ScrollbarBackgroundColor)]">bingie_bar.png</texturesliderbackground>
+            <texturesliderbar border="3" colordiffuse="$INFO[Skin.String(ScrollbarUnfocusedColor)]">bingie_bar.png</texturesliderbar>
+            <texturesliderbarfocus border="3" colordiffuse="$INFO[Skin.String(ScrollbarFocusedColor)]">bingie_bar.png</texturesliderbarfocus>
+            <textureslidernib></textureslidernib>
+            <textureslidernibfocus></textureslidernibfocus>
+            <pulseonselect>false</pulseonselect>
+            <orientation>vertical</orientation>
+            <showonepage>false</showonepage>
+            <onleft>1000</onleft>
+        </control>
+        <control type="panel" id="1000">
+            <left>80</left>
+            <top>140</top>
+            <width>1760</width>
+            <height>900</height>
+            <orientation>vertical</orientation>
+            <pagecontrol>60</pagecontrol>
+            <onright>60</onright>
+            <scrolltime tween="cubic" easing="out">300</scrolltime>
+            <itemlayout height="300" width="880">
+                    <control type="image">
+                        <width>860</width>
+                        <height>280</height>
+                        <texture border="12">bingie_panel.png</texture>
+                        <colordiffuse>$INFO[Skin.String(ButtonColor)]</colordiffuse>
+                    </control>
+                    <control type="image">
+                        <left>10</left>
+                        <top>10</top>
+                        <width>173</width>
+                        <height>260</height>
+                        <aspectratio>scale</aspectratio>
+                        <texture background="true" border="6">$INFO[ListItem.Property(poster)]</texture>
+                    </control>
+                    <control type="group">
+                        <left>205</left>
+                        <top>16</top>
+                        <control type="label">
+                            <width>420</width>
+                            <height>30</height>
+                            <aligny>center</aligny>
+                            <font>Bold22</font>
+                            <textcolor>$INFO[Skin.String(BingieProgressBarColor)]</textcolor>
+                            <label>[UPPERCASE]$INFO[ListItem.Property(raw_day)][/UPPERCASE]$INFO[ListItem.Property(raw_time),  •  ,]</label>
+                            <visible>!String.IsEmpty(ListItem.Property(raw_day)) + !String.IsEqual(ListItem.Property(raw_day),-) + !String.IsEqual(ListItem.Property(raw_day),TBA)</visible>
+                        </control>
+                        <control type="label">
+                            <left>420</left>
+                            <width>225</width>
+                            <height>30</height>
+                            <align>right</align>
+                            <aligny>center</aligny>
+                            <font>Reg22</font>
+                            <textcolor>$INFO[Skin.String(BingieDeatailsTextColor)]</textcolor>
+                            <label>$INFO[ListItem.Property(raw_countdown)]</label>
+                            <visible>!String.IsEmpty(ListItem.Property(raw_countdown)) + !String.IsEqual(ListItem.Property(raw_countdown),-) + !String.IsEqual(ListItem.Property(raw_countdown),TBA)</visible>
+                        </control>
+                        <control type="label">
+                            <top>34</top>
+                            <width>645</width>
+                            <height>42</height>
+                            <aligny>center</aligny>
+                            <font>Bold30</font>
+                            <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+                            <scroll>false</scroll>
+                            <label>$INFO[ListItem.Property(release_title)]</label>
+                        </control>
+                        <control type="label">
+                            <top>78</top>
+                            <width>645</width>
+                            <height>32</height>
+                            <aligny>center</aligny>
+                            <font>Reg24</font>
+                            <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+                            <scroll>false</scroll>
+                            <label>$INFO[ListItem.Property(airing_tag)]</label>
+                        </control>
+                        <control type="textbox">
+                            <top>116</top>
+                            <width>645</width>
+                            <height>96</height>
+                            <font>Reg22</font>
+                            <textcolor>$INFO[Skin.String(BingiePlotTextColor)]</textcolor>
+                            <label>$INFO[ListItem.Property(plot)]</label>
+                        </control>
+                        <control type="grouplist">
+                            <top>222</top>
+                            <width>645</width>
+                            <height>34</height>
+                            <orientation>horizontal</orientation>
+                            <itemgap>10</itemgap>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <control type="label">
+                                <width>auto</width>
+                                <height>34</height>
+                                <aligny>center</aligny>
+                                <font>Bold22</font>
+                                <textcolor>$INFO[Skin.String(BingieRatingInDetailsColor)]</textcolor>
+                                <label>$INFO[ListItem.Property(rating_average_label),, Match]</label>
+                                <visible>!String.IsEmpty(ListItem.Property(rating_average_label)) + !String.IsEqual(ListItem.Property(rating_average_label),-) + !String.IsEqual(ListItem.Property(rating_average_label),TBA)</visible>
+                            </control>
+                            <control type="label">
+                                <width>auto</width>
+                                <height>34</height>
+                                <aligny>center</aligny>
+                                <font>Reg22</font>
+                                <textcolor>$INFO[Skin.String(BingieSecondaryTextColor)]</textcolor>
+                                <label>$INFO[ListItem.Property(genres)]</label>
+                                <visible>!String.IsEmpty(ListItem.Property(genres))</visible>
+                            </control>
+                        </control>
+                    </control>
+            </itemlayout>
+            <focusedlayout height="300" width="880" condition="Control.HasFocus(1000)">
+                    <control type="image">
+                        <width>860</width>
+                        <height>280</height>
+                        <texture border="12">bingie_panel.png</texture>
+                        <colordiffuse>FF1F1F1F</colordiffuse>
+                    </control>
+                    <control type="image">
+                        <left>10</left>
+                        <top>10</top>
+                        <width>173</width>
+                        <height>260</height>
+                        <aspectratio>scale</aspectratio>
+                        <texture background="true" border="6">$INFO[ListItem.Property(poster)]</texture>
+                    </control>
+                    <control type="group">
+                        <left>205</left>
+                        <top>16</top>
+                        <control type="label">
+                            <width>420</width>
+                            <height>30</height>
+                            <aligny>center</aligny>
+                            <font>Bold22</font>
+                            <textcolor>$INFO[Skin.String(BingieProgressBarColor)]</textcolor>
+                            <label>[UPPERCASE]$INFO[ListItem.Property(raw_day)][/UPPERCASE]$INFO[ListItem.Property(raw_time),  •  ,]</label>
+                            <visible>!String.IsEmpty(ListItem.Property(raw_day)) + !String.IsEqual(ListItem.Property(raw_day),-) + !String.IsEqual(ListItem.Property(raw_day),TBA)</visible>
+                        </control>
+                        <control type="label">
+                            <left>420</left>
+                            <width>225</width>
+                            <height>30</height>
+                            <align>right</align>
+                            <aligny>center</aligny>
+                            <font>Reg22</font>
+                            <textcolor>$INFO[Skin.String(BingieDeatailsTextColor)]</textcolor>
+                            <label>$INFO[ListItem.Property(raw_countdown)]</label>
+                            <visible>!String.IsEmpty(ListItem.Property(raw_countdown)) + !String.IsEqual(ListItem.Property(raw_countdown),-) + !String.IsEqual(ListItem.Property(raw_countdown),TBA)</visible>
+                        </control>
+                        <control type="label">
+                            <top>34</top>
+                            <width>645</width>
+                            <height>42</height>
+                            <aligny>center</aligny>
+                            <font>Bold30</font>
+                            <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+                            <scroll>true</scroll>
+                            <label>$INFO[ListItem.Property(release_title)]</label>
+                        </control>
+                        <control type="label">
+                            <top>78</top>
+                            <width>645</width>
+                            <height>32</height>
+                            <aligny>center</aligny>
+                            <font>Reg24</font>
+                            <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+                            <scroll>true</scroll>
+                            <label>$INFO[ListItem.Property(airing_tag)]</label>
+                        </control>
+                        <control type="textbox">
+                            <top>116</top>
+                            <width>645</width>
+                            <height>96</height>
+                            <font>Reg22</font>
+                            <textcolor>$INFO[Skin.String(BingiePlotTextColor)]</textcolor>
+                            <label>$INFO[ListItem.Property(plot)]</label>
+                        </control>
+                        <control type="grouplist">
+                            <top>222</top>
+                            <width>645</width>
+                            <height>34</height>
+                            <orientation>horizontal</orientation>
+                            <itemgap>10</itemgap>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <control type="label">
+                                <width>auto</width>
+                                <height>34</height>
+                                <aligny>center</aligny>
+                                <font>Bold22</font>
+                                <textcolor>$INFO[Skin.String(BingieRatingInDetailsColor)]</textcolor>
+                                <label>$INFO[ListItem.Property(rating_average_label),, Match]</label>
+                                <visible>!String.IsEmpty(ListItem.Property(rating_average_label)) + !String.IsEqual(ListItem.Property(rating_average_label),-) + !String.IsEqual(ListItem.Property(rating_average_label),TBA)</visible>
+                            </control>
+                            <control type="label">
+                                <width>auto</width>
+                                <height>34</height>
+                                <aligny>center</aligny>
+                                <font>Reg22</font>
+                                <textcolor>$INFO[Skin.String(BingieSecondaryTextColor)]</textcolor>
+                                <label>$INFO[ListItem.Property(genres)]</label>
+                                <visible>!String.IsEmpty(ListItem.Property(genres))</visible>
+                            </control>
+                        </control>
+                    </control>
+                    <control type="image">
+                        <width>860</width>
+                        <height>280</height>
+                        <texture border="8">bingie_button_border.png</texture>
+                        <colordiffuse>$INFO[Skin.String(ViewDetailsBorderFocusColor)]</colordiffuse>
+                    </control>
+            </focusedlayout>
+            <focusedlayout height="300" width="880" condition="!Control.HasFocus(1000)">
+                    <control type="image">
+                        <width>860</width>
+                        <height>280</height>
+                        <texture border="12">bingie_panel.png</texture>
+                        <colordiffuse>$INFO[Skin.String(ButtonColor)]</colordiffuse>
+                    </control>
+                    <control type="image">
+                        <left>10</left>
+                        <top>10</top>
+                        <width>173</width>
+                        <height>260</height>
+                        <aspectratio>scale</aspectratio>
+                        <texture background="true" border="6">$INFO[ListItem.Property(poster)]</texture>
+                    </control>
+                    <control type="group">
+                        <left>205</left>
+                        <top>16</top>
+                        <control type="label">
+                            <width>420</width>
+                            <height>30</height>
+                            <aligny>center</aligny>
+                            <font>Bold22</font>
+                            <textcolor>$INFO[Skin.String(BingieProgressBarColor)]</textcolor>
+                            <label>[UPPERCASE]$INFO[ListItem.Property(raw_day)][/UPPERCASE]$INFO[ListItem.Property(raw_time),  •  ,]</label>
+                            <visible>!String.IsEmpty(ListItem.Property(raw_day)) + !String.IsEqual(ListItem.Property(raw_day),-) + !String.IsEqual(ListItem.Property(raw_day),TBA)</visible>
+                        </control>
+                        <control type="label">
+                            <left>420</left>
+                            <width>225</width>
+                            <height>30</height>
+                            <align>right</align>
+                            <aligny>center</aligny>
+                            <font>Reg22</font>
+                            <textcolor>$INFO[Skin.String(BingieDeatailsTextColor)]</textcolor>
+                            <label>$INFO[ListItem.Property(raw_countdown)]</label>
+                            <visible>!String.IsEmpty(ListItem.Property(raw_countdown)) + !String.IsEqual(ListItem.Property(raw_countdown),-) + !String.IsEqual(ListItem.Property(raw_countdown),TBA)</visible>
+                        </control>
+                        <control type="label">
+                            <top>34</top>
+                            <width>645</width>
+                            <height>42</height>
+                            <aligny>center</aligny>
+                            <font>Bold30</font>
+                            <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+                            <scroll>false</scroll>
+                            <label>$INFO[ListItem.Property(release_title)]</label>
+                        </control>
+                        <control type="label">
+                            <top>78</top>
+                            <width>645</width>
+                            <height>32</height>
+                            <aligny>center</aligny>
+                            <font>Reg24</font>
+                            <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+                            <scroll>false</scroll>
+                            <label>$INFO[ListItem.Property(airing_tag)]</label>
+                        </control>
+                        <control type="textbox">
+                            <top>116</top>
+                            <width>645</width>
+                            <height>96</height>
+                            <font>Reg22</font>
+                            <textcolor>$INFO[Skin.String(BingiePlotTextColor)]</textcolor>
+                            <label>$INFO[ListItem.Property(plot)]</label>
+                        </control>
+                        <control type="grouplist">
+                            <top>222</top>
+                            <width>645</width>
+                            <height>34</height>
+                            <orientation>horizontal</orientation>
+                            <itemgap>10</itemgap>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <control type="label">
+                                <width>auto</width>
+                                <height>34</height>
+                                <aligny>center</aligny>
+                                <font>Bold22</font>
+                                <textcolor>$INFO[Skin.String(BingieRatingInDetailsColor)]</textcolor>
+                                <label>$INFO[ListItem.Property(rating_average_label),, Match]</label>
+                                <visible>!String.IsEmpty(ListItem.Property(rating_average_label)) + !String.IsEqual(ListItem.Property(rating_average_label),-) + !String.IsEqual(ListItem.Property(rating_average_label),TBA)</visible>
+                            </control>
+                            <control type="label">
+                                <width>auto</width>
+                                <height>34</height>
+                                <aligny>center</aligny>
+                                <font>Reg22</font>
+                                <textcolor>$INFO[Skin.String(BingieSecondaryTextColor)]</textcolor>
+                                <label>$INFO[ListItem.Property(genres)]</label>
+                                <visible>!String.IsEmpty(ListItem.Property(genres))</visible>
+                            </control>
+                        </control>
+                    </control>
+            </focusedlayout>
+        </control>
+    </controls>
+</window>

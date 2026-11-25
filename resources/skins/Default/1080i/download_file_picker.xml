@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Prism theme for Bingie -->
+<window type="dialog">
+    <defaultcontrol>1000</defaultcontrol>
+    <coordinates>
+        <left>0</left>
+        <top>0</top>
+    </coordinates>
+    <animation type="WindowOpen" reversible="false">
+        <effect type="fade" start="0" end="100" time="300"/>
+    </animation>
+    <animation type="WindowClose" reversible="false">
+        <effect type="fade" start="100" end="0" time="250"/>
+    </animation>
+    <controls>
+        <control type="image">
+            <width>1920</width>
+            <height>1080</height>
+            <texture>bingie_white.png</texture>
+            <colordiffuse>FF000000</colordiffuse>
+        </control>
+        <control type="image">
+            <width>1920</width>
+            <height>1080</height>
+            <aspectratio>scale</aspectratio>
+            <texture background="true">$INFO[Window().Property(prism.fanart)]</texture>
+        </control>
+        <control type="image">
+            <width>1920</width>
+            <height>1080</height>
+            <texture>bingie_white.png</texture>
+            <colordiffuse>$INFO[Skin.String(BackgroundOverlayColor)]</colordiffuse>
+        </control>
+        <control type="image">
+            <width>1920</width>
+            <height>1080</height>
+            <texture>bingie_white.png</texture>
+            <colordiffuse>BF000000</colordiffuse>
+        </control>
+        <control type="label">
+            <left>80</left>
+            <top>40</top>
+            <width>1760</width>
+            <height>70</height>
+            <align>left</align>
+            <aligny>center</aligny>
+            <font>Bold38</font>
+            <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+            <label>[COLOR $INFO[Skin.String(BingieProgressBarColor)]]PRISM[/COLOR]   $ADDON[plugin.video.prism 30483]</label>
+        </control>
+        <control type="label">
+            <right>80</right>
+            <top>40</top>
+            <width>800</width>
+            <height>70</height>
+            <align>right</align>
+            <aligny>center</aligny>
+            <font>Reg28</font>
+            <textcolor>$INFO[Skin.String(BingieDeatailsTextColor)]</textcolor>
+            <label>$ADDON[plugin.video.prism 30949]  [COLOR $INFO[Skin.String(GeneralTextColor)]][B]$INFO[Window().Property(picker.selected_count)][/B][/COLOR] / $INFO[Window().Property(picker.total_count)]</label>
+        </control>
+        <control type="scrollbar" id="1111">
+            <left>1336</left>
+            <top>140</top>
+            <width>8</width>
+            <height>900</height>
+            <texturesliderbackground border="3" colordiffuse="$INFO[Skin.String(ScrollbarBackgroundColor)]">bingie_bar.png</texturesliderbackground>
+            <texturesliderbar border="3" colordiffuse="$INFO[Skin.String(ScrollbarUnfocusedColor)]">bingie_bar.png</texturesliderbar>
+            <texturesliderbarfocus border="3" colordiffuse="$INFO[Skin.String(ScrollbarFocusedColor)]">bingie_bar.png</texturesliderbarfocus>
+            <textureslidernib></textureslidernib>
+            <textureslidernibfocus></textureslidernibfocus>
+            <pulseonselect>false</pulseonselect>
+            <orientation>vertical</orientation>
+            <showonepage>false</showonepage>
+            <onleft>1000</onleft>
+            <onright>2000</onright>
+        </control>
+        <control type="list" id="1000">
+            <viewtype label="Files">list</viewtype>
+            <pagecontrol>1111</pagecontrol>
+            <onleft>2000</onleft>
+            <onright>1111</onright>
+            <left>80</left>
+            <top>140</top>
+            <width>1240</width>
+            <height>900</height>
+            <orientation>vertical</orientation>
+            <scrolltime tween="cubic" easing="out">300</scrolltime>
+            <itemlayout height="110" width="1240">
+                    <control type="image">
+                        <width>1240</width>
+                        <height>100</height>
+                        <texture border="12">bingie_panel.png</texture>
+                        <colordiffuse>$INFO[Skin.String(ButtonColor)]</colordiffuse>
+                    </control>
+                    <control type="image">
+                        <left>26</left>
+                        <top>32</top>
+                        <width>36</width>
+                        <height>36</height>
+                        <texture>bingie_check_on.png</texture>
+                        <colordiffuse>$INFO[Skin.String(BingieProgressBarColor)]</colordiffuse>
+                        <visible>String.IsEqual(ListItem.Property(selected),True)</visible>
+                    </control>
+                    <control type="image">
+                        <left>26</left>
+                        <top>32</top>
+                        <width>36</width>
+                        <height>36</height>
+                        <texture>bingie_check_off.png</texture>
+                        <colordiffuse>$INFO[Skin.String(BingieDeatailsTextColor)]</colordiffuse>
+                        <visible>!String.IsEqual(ListItem.Property(selected),True)</visible>
+                    </control>
+                    <control type="label">
+                        <left>90</left>
+                        <top>12</top>
+                        <width>900</width>
+                        <height>40</height>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>Bold26</font>
+                        <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+                        <scroll>false</scroll>
+                        <label>$INFO[ListItem.Property(filename)]</label>
+                        <visible>String.IsEqual(ListItem.Property(selected),True)</visible>
+                    </control>
+                    <control type="label">
+                        <left>90</left>
+                        <top>12</top>
+                        <width>900</width>
+                        <height>40</height>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>Reg26</font>
+                        <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+                        <scroll>false</scroll>
+                        <label>$INFO[ListItem.Property(filename)]</label>
+                        <visible>!String.IsEqual(ListItem.Property(selected),True)</visible>
+                    </control>
+                    <control type="label">
+                        <left>90</left>
+                        <top>54</top>
+                        <width>900</width>
+                        <height>34</height>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>Reg22</font>
+                        <textcolor>$INFO[Skin.String(BingieSecondaryTextColor)]</textcolor>
+                        <scroll>false</scroll>
+                        <label>$INFO[ListItem.Property(path)]</label>
+                    </control>
+                    <control type="label">
+                        <left>1000</left>
+                        <top>12</top>
+                        <width>215</width>
+                        <height>40</height>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <font>Reg24</font>
+                        <textcolor>$INFO[Skin.String(BingieDeatailsTextColor)]</textcolor>
+                        <scroll>false</scroll>
+                        <label>$INFO[ListItem.Property(filesize)]</label>
+                    </control>
+            </itemlayout>
+            <focusedlayout height="110" width="1240" condition="Control.HasFocus(1000)">
+                    <control type="image">
+                        <width>1240</width>
+                        <height>100</height>
+                        <texture border="12">bingie_panel.png</texture>
+                        <colordiffuse>$INFO[Skin.String(ButtonFocusColor)]</colordiffuse>
+                    </control>
+                    <control type="image">
+                        <left>26</left>
+                        <top>32</top>
+                        <width>36</width>
+                        <height>36</height>
+                        <texture>bingie_check_on.png</texture>
+                        <colordiffuse>$INFO[Skin.String(ButtonFocusTextColor)]</colordiffuse>
+                        <visible>String.IsEqual(ListItem.Property(selected),True)</visible>
+                    </control>
+                    <control type="image">
+                        <left>26</left>
+                        <top>32</top>
+                        <width>36</width>
+                        <height>36</height>
+                        <texture>bingie_check_off.png</texture>
+                        <colordiffuse>$INFO[Skin.String(ButtonFocusTextColor)]</colordiffuse>
+                        <visible>!String.IsEqual(ListItem.Property(selected),True)</visible>
+                    </control>
+                    <control type="label">
+                        <left>90</left>
+                        <top>12</top>
+                        <width>900</width>
+                        <height>40</height>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>Bold26</font>
+                        <textcolor>$INFO[Skin.String(ButtonFocusTextColor)]</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[ListItem.Property(filename)]</label>
+                        <visible>String.IsEqual(ListItem.Property(selected),True)</visible>
+                    </control>
+                    <control type="label">
+                        <left>90</left>
+                        <top>12</top>
+                        <width>900</width>
+                        <height>40</height>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>Reg26</font>
+                        <textcolor>$INFO[Skin.String(ButtonFocusTextColor)]</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[ListItem.Property(filename)]</label>
+                        <visible>!String.IsEqual(ListItem.Property(selected),True)</visible>
+                    </control>
+                    <control type="label">
+                        <left>90</left>
+                        <top>54</top>
+                        <width>900</width>
+                        <height>34</height>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>Reg22</font>
+                        <textcolor>$INFO[Skin.String(ButtonFocusTextColor)]</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[ListItem.Property(path)]</label>
+                    </control>
+                    <control type="label">
+                        <left>1000</left>
+                        <top>12</top>
+                        <width>215</width>
+                        <height>40</height>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <font>Reg24</font>
+                        <textcolor>$INFO[Skin.String(ButtonFocusTextColor)]</textcolor>
+                        <scroll>false</scroll>
+                        <label>$INFO[ListItem.Property(filesize)]</label>
+                    </control>
+            </focusedlayout>
+            <focusedlayout height="110" width="1240" condition="!Control.HasFocus(1000)">
+                    <control type="image">
+                        <width>1240</width>
+                        <height>100</height>
+                        <texture border="12">bingie_panel.png</texture>
+                        <colordiffuse>$INFO[Skin.String(ButtonFocusColor)]</colordiffuse>
+                        <animation effect="fade" start="100" end="50" condition="true">Conditional</animation>
+                    </control>
+                    <control type="image">
+                        <left>26</left>
+                        <top>32</top>
+                        <width>36</width>
+                        <height>36</height>
+                        <texture>bingie_check_on.png</texture>
+                        <colordiffuse>$INFO[Skin.String(ButtonFocusTextColor)]</colordiffuse>
+                        <visible>String.IsEqual(ListItem.Property(selected),True)</visible>
+                    </control>
+                    <control type="image">
+                        <left>26</left>
+                        <top>32</top>
+                        <width>36</width>
+                        <height>36</height>
+                        <texture>bingie_check_off.png</texture>
+                        <colordiffuse>$INFO[Skin.String(ButtonFocusTextColor)]</colordiffuse>
+                        <visible>!String.IsEqual(ListItem.Property(selected),True)</visible>
+                    </control>
+                    <control type="label">
+                        <left>90</left>
+                        <top>12</top>
+                        <width>900</width>
+                        <height>40</height>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>Bold26</font>
+                        <textcolor>$INFO[Skin.String(ButtonFocusTextColor)]</textcolor>
+                        <scroll>false</scroll>
+                        <label>$INFO[ListItem.Property(filename)]</label>
+                        <visible>String.IsEqual(ListItem.Property(selected),True)</visible>
+                    </control>
+                    <control type="label">
+                        <left>90</left>
+                        <top>12</top>
+                        <width>900</width>
+                        <height>40</height>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>Reg26</font>
+                        <textcolor>$INFO[Skin.String(ButtonFocusTextColor)]</textcolor>
+                        <scroll>false</scroll>
+                        <label>$INFO[ListItem.Property(filename)]</label>
+                        <visible>!String.IsEqual(ListItem.Property(selected),True)</visible>
+                    </control>
+                    <control type="label">
+                        <left>90</left>
+                        <top>54</top>
+                        <width>900</width>
+                        <height>34</height>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>Reg22</font>
+                        <textcolor>$INFO[Skin.String(ButtonFocusTextColor)]</textcolor>
+                        <scroll>false</scroll>
+                        <label>$INFO[ListItem.Property(path)]</label>
+                    </control>
+                    <control type="label">
+                        <left>1000</left>
+                        <top>12</top>
+                        <width>215</width>
+                        <height>40</height>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <font>Reg24</font>
+                        <textcolor>$INFO[Skin.String(ButtonFocusTextColor)]</textcolor>
+                        <scroll>false</scroll>
+                        <label>$INFO[ListItem.Property(filesize)]</label>
+                    </control>
+            </focusedlayout>
+        </control>
+        <control type="group">
+            <left>1380</left>
+            <top>140</top>
+            <control type="image">
+            <left>0</left>
+            <top>0</top>
+            <width>460</width>
+            <height>345</height>
+            <texture border="12">bingie_panel.png</texture>
+            <colordiffuse>$INFO[Skin.String(GeneralPanelsColor)]</colordiffuse>
+        </control>
+            <control type="grouplist" id="2000">
+                <left>20</left>
+                <top>20</top>
+                <width>420</width>
+                <height>305</height>
+                <itemgap>8</itemgap>
+                <onleft>1000</onleft>
+                    <control type="button" id="2001">
+                        <width>420</width>
+                        <height>64</height>
+                        <font>Reg26</font>
+                        <textoffsetx>26</textoffsetx>
+                        <aligny>center</aligny>
+                        <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+                        <focusedcolor>$INFO[Skin.String(ButtonFocusTextColor)]</focusedcolor>
+                        <texturefocus border="12" colordiffuse="$INFO[Skin.String(ButtonFocusColor)]">bingie_panel.png</texturefocus>
+                        <texturenofocus></texturenofocus>
+                        <pulseonselect>false</pulseonselect>
+                        <label>$ADDON[plugin.video.prism 30946]</label>
+                    </control>
+                    <control type="button" id="2002">
+                        <width>420</width>
+                        <height>64</height>
+                        <font>Reg26</font>
+                        <textoffsetx>26</textoffsetx>
+                        <aligny>center</aligny>
+                        <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+                        <focusedcolor>$INFO[Skin.String(ButtonFocusTextColor)]</focusedcolor>
+                        <texturefocus border="12" colordiffuse="$INFO[Skin.String(ButtonFocusColor)]">bingie_panel.png</texturefocus>
+                        <texturenofocus></texturenofocus>
+                        <pulseonselect>false</pulseonselect>
+                        <label>$ADDON[plugin.video.prism 30947]</label>
+                    </control>
+                    <control type="image">
+                        <width>420</width>
+                        <height>17</height>
+                        <texture border="0,8,0,8">bingie_separator.png</texture>
+                        <colordiffuse>26FFFFFF</colordiffuse>
+                    </control>
+                    <control type="button" id="2003">
+                        <width>420</width>
+                        <height>64</height>
+                        <font>Reg26</font>
+                        <textoffsetx>26</textoffsetx>
+                        <aligny>center</aligny>
+                        <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+                        <focusedcolor>$INFO[Skin.String(ButtonFocusTextColor)]</focusedcolor>
+                        <texturefocus border="12" colordiffuse="$INFO[Skin.String(ButtonFocusColor)]">bingie_panel.png</texturefocus>
+                        <texturenofocus></texturenofocus>
+                        <pulseonselect>false</pulseonselect>
+                        <label>[B]$ADDON[plugin.video.prism 30948][/B]</label>
+                    </control>
+                    <control type="button" id="2999">
+                        <width>420</width>
+                        <height>64</height>
+                        <font>Reg26</font>
+                        <textoffsetx>26</textoffsetx>
+                        <aligny>center</aligny>
+                        <textcolor>$INFO[Skin.String(GeneralTextColor)]</textcolor>
+                        <focusedcolor>$INFO[Skin.String(ButtonFocusTextColor)]</focusedcolor>
+                        <texturefocus border="12" colordiffuse="$INFO[Skin.String(ButtonFocusColor)]">bingie_panel.png</texturefocus>
+                        <texturenofocus></texturenofocus>
+                        <pulseonselect>false</pulseonselect>
+                        <label>$ADDON[plugin.video.prism 30459]</label>
+                    </control>
+            </control>
+        </control>
+    </controls>
+</window>
